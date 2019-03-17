@@ -48,10 +48,11 @@ export default class UsersScene extends PureComponent {
             return (
               <FlatList
                 data={data.users}
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('UserScene', { id: item.id })
+                      navigation.navigate('UserScene', { user: item})
                     }
                   >
                     <UserList user={item} />
