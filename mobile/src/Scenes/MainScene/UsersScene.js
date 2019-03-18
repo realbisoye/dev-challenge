@@ -52,7 +52,7 @@ export default class UsersScene extends PureComponent {
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('UserScene', { user: item})
+                      navigation.navigate('UserScene', { id: item.id})
                     }
                   >
                     <UserList user={item} />
