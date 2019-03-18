@@ -24,6 +24,7 @@ const query = gql`
       color
       name
       image
+      catchPhrase
     }
   }
 `;

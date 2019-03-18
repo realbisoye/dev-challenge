@@ -22,13 +22,16 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   text: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    flex: 1,
   },
   textName: {
-    fontSize: 24
-  },
-  textEmail: {
     fontSize: 18
+  },
+  textPhrase: {
+    fontSize: 14,
+
   }
 });
 
@@ -39,7 +42,7 @@ export default memo(({ company }) => (
     </View>
     <View style={styles.text}>
       <Text style={styles.textName}>{company.name}</Text>
-      <Text style={styles.textEmail}>{company.email}</Text>
+      <Text style={styles.textPhrase}>{company.catchPhrase}</Text>
     </View>
   </View>
 ));
