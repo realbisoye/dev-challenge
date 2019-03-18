@@ -14,9 +14,14 @@ export default async function users(root, args, { ctx }, info) {
   // todo: 5. getting this list of all users is slow.  Would be really cool if it could return all the users
   //  in a more performant way.  Keeping in mind that the underlaying JSON files may get updated.
 
+  const queryField = Object.keys(args)[0]
   const users = files
     .filter(filename => filename.includes('.json'))
-    .map(filename => getUser(filename.replace('.json', '')));
+    .map(filename => getUser(filename.replace('.json', '')))
+
+  if (queryField) {
+    users = users.filter((user) => user[queryField] === args[queryField])
+  }
 
   return users;
 }
