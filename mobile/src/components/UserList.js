@@ -22,13 +22,15 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   text: {
-    flexDirection: 'column'
+    flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'wrap',
   },
   textName: {
     fontSize: 24
   },
   textEmail: {
-    fontSize: 18
+    fontSize: 16
   }
 });
 
