@@ -36,7 +36,9 @@ query User($id: ID!) {
       name
     }
     company {
+      id
       name
+      suffice
     }
   }
 }
@@ -114,7 +116,7 @@ export default class UserScene extends PureComponent {
             return <ErrorScene message={error.message} />;
           }
           const user = data.user
-          console.log(user, 'USERss')
+
           return (
             <ScrollView contentContainerStyle={[styles.userCard, {backgroundColor: user.color}]}>
               <ImageBackground style={styles.imageWrapper} imageStyle={styles.image} source={{ uri: user.image }} />
@@ -124,7 +126,9 @@ export default class UserScene extends PureComponent {
                 <Text style={styles.textEmail}>{user.email}</Text>
                 {user.company && <View style={styles.sectionWrapper}>
                   <Text style={styles.sectionHeading}>Company</Text>
-                  <Text style={styles.textEmail}>{user.company.name}</Text>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('CompanyScene', { id: user.company.id})}>
+                    <Text style={styles.textEmail}>{user.company.name} {user.company.suffice}</Text>
+                  </TouchableOpacity>
                 </View>}
                 {user.friends && user.friends.length && <View style={styles.sectionWrapper}>
                   <Text style={styles.sectionHeading}>Friends</Text>

@@ -53,7 +53,7 @@ export default class CompaniesScene extends PureComponent {
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('CompanySchene', { company: item})
+                      navigation.navigate('CompanyScene', { id: item.id})
                     }
                   >
                     <CompanyList company={item} />
