@@ -15,12 +15,13 @@ export default async function users(root, args, { ctx }, info) {
   //  in a more performant way.  Keeping in mind that the underlaying JSON files may get updated.
 
   const queryField = Object.keys(args)[0]
-  const users = files
+  let users = files
     .filter(filename => filename.includes('.json'))
     .map(filename => getUser(filename.replace('.json', '')))
 
   if (queryField) {
-    users = users.filter((user) => user[queryField] === args[queryField])
+    const resolvedUser = await Promise.all(users)
+    users = resolvedUser.filter((user) => user[queryField] === args[queryField])
   }
 
   return users;
