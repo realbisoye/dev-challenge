@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 const styles = StyleSheet.create({
-  userList: {
+  companyList: {
     flexDirection: 'row',
     padding: 20
   },
@@ -22,26 +22,27 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   text: {
-    flex: 1,
     flexDirection: 'column',
     flexWrap: 'wrap',
+    flex: 1,
   },
   textName: {
-    fontSize: 24
+    fontSize: 18
   },
-  textEmail: {
-    fontSize: 16
+  textPhrase: {
+    fontSize: 14,
+
   }
 });
 
-export default memo(({ user }) => (
-  <View style={styles.userList}>
-    <View style={[styles.imageWrapper, { borderColor: user.color }]}>
-      <Image style={styles.image} source={{ uri: user.image }} />
+export default memo(({ company }) => (
+  <View style={styles.companyList}>
+    <View style={[styles.imageWrapper, { borderColor: company.color }]}>
+      <Image style={styles.image} source={{ uri: company.image }} />
     </View>
     <View style={styles.text}>
-      <Text style={styles.textName}>{user.name}</Text>
-      <Text style={styles.textEmail}>{user.email}</Text>
+      <Text style={styles.textName}>{company.name}</Text>
+      <Text style={styles.textPhrase}>{company.catchPhrase}</Text>
     </View>
   </View>
 ));

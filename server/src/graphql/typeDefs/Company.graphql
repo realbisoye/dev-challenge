@@ -27,4 +27,8 @@ type Company {
   image: String!
   name: String!
   employees: [User!]
+  address: Address
+  suffice: String
+  catchPhrase: String
+  bs: String
 }
